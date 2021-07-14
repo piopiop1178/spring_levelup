@@ -32,11 +32,15 @@ public class CustomOAuth2UserService implements OAuth2UserService {
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
 
         //OAuth2 로그인 진행 시 키가 되는 필드 값?? = Primary Key, 구글의 경우 기본 코드 지원(sub) 나머지 x -> 무슨 뜻인지?
-        String UserNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
+        String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
                 .getUserInfoEndpoint().getUserNameAttributeName();
 
+//        System.out.println(registrationId);
+//        System.out.println(userNameAttributeName);
+//        System.out.println(oAuth2User.getAttributes());
+
         //user attribute dto
-        OAuthAttributes attributes = OAuthAttributes.of(registrationId, UserNameAttributeName, oAuth2User.getAttributes());
+        OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
         User user = saveOrUpdate(attributes);
         //세션에 사용자 정보 저장
