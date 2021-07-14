@@ -35,6 +35,7 @@ public class CustomOAuth2UserService implements OAuth2UserService {
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
                 .getUserInfoEndpoint().getUserNameAttributeName();
 
+        //for memory db test
 //        System.out.println(registrationId);
 //        System.out.println(userNameAttributeName);
 //        System.out.println(oAuth2User.getAttributes());
@@ -46,6 +47,9 @@ public class CustomOAuth2UserService implements OAuth2UserService {
         //세션에 사용자 정보 저장
         httpSession.setAttribute("user", new SessionUser(user));
 
+        //for memory db test
+//        System.out.println(userRepository.findAll());
+
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")),
                 attributes.getAttributes(),
@@ -54,6 +58,8 @@ public class CustomOAuth2UserService implements OAuth2UserService {
     }
 
     //이미 저장된 아이디에 정보가 바뀌었으면 반영, 처음 저장된다면 그대로 저장
+    //이메일 말고 다른 기준 필요함 -> ID 같은?
+    //메모리 db에서는 중복저장되는 중. JPA 쓰면 괜춘
     private User saveOrUpdate(OAuthAttributes attributes) {
         User user = userRepository.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName()))
