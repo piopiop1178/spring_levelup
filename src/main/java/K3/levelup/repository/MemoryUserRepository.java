@@ -4,7 +4,7 @@ import K3.levelup.domain.User;
 
 import java.util.*;
 
-public class MemoryUserRepository implements MemberRepository{
+public class MemoryUserRepository implements UserRepository {
     //동시성 고려하지 않은 임시 메모리 db
     private static Map<Long, User> repo = new HashMap<>();
     //id 수동으로 설정
@@ -20,6 +20,13 @@ public class MemoryUserRepository implements MemberRepository{
     @Override
     public Optional<User> findById(Long id) {
         return Optional.ofNullable(repo.get(id));
+    }
+
+    @Override
+    public Optional<User> findByEmail(String email) {
+        return repo.values().stream()
+                .filter(member -> member.getEmail().equals(email))
+                .findAny();
     }
 
     @Override
