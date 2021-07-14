@@ -1,9 +1,11 @@
 package K3.levelup.repository;
 
 import K3.levelup.domain.User;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@Repository
 public class MemoryUserRepository implements UserRepository {
     //동시성 고려하지 않은 임시 메모리 db
     private static Map<Long, User> repo = new HashMap<>();

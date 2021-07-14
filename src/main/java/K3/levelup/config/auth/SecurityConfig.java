@@ -10,7 +10,7 @@ import org.springframework.security.oauth2.client.userinfo.OAuth2UserService;
 @EnableWebSecurity //spring security 설정 활성화 -> 좀 더 알아보기
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final OAuth2UserService customOAuth2UserService;
+    private final CustomOAuth2UserService customOAuth2UserService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
