@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 public class User {
     private Long id;
+    private String provider;
     private String name;
     private String email;
 

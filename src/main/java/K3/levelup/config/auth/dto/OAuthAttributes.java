@@ -13,6 +13,7 @@ import java.util.Map;
 public class OAuthAttributes {
     private Map<String, Object> attributes;
     private String nameAttributeKey;
+    private String provider;
     private String name;
     private String email;
 
@@ -21,14 +22,15 @@ public class OAuthAttributes {
                                      String userNameAttributeName,
                                      Map<String, Object> attributes) {
         if("naver".equals(registrationId)) {
-            return ofNaver("id", attributes);
+            return ofNaver("id", attributes, registrationId);
         }
-        return ofGoogle(userNameAttributeName, attributes);
+        return ofGoogle(userNameAttributeName, attributes, registrationId);
     }
 
     private static OAuthAttributes ofGoogle(String userNameAttributeName,
-                                            Map<String, Object> attributes) {
+                                            Map<String, Object> attributes, String registrationId) {
         return OAuthAttributes.builder()
+                .provider(registrationId)
                 .name((String) attributes.get("name"))
                 .email((String) attributes.get("email"))
                 .attributes(attributes)
@@ -37,12 +39,13 @@ public class OAuthAttributes {
     }
 
     private static OAuthAttributes ofNaver(String userNameAttributeName,
-                                           Map<String, Object> attributes) {
+                                           Map<String, Object> attributes, String registrationId) {
 
         //네이버 api 응답 형태가 달라 response에서 정보를 꺼내야됨
         Map<String, Object> response = (Map<String, Object>) attributes.get("response");
 
         return OAuthAttributes.builder()
+                .provider(registrationId)
                 .name((String) response.get("name"))
                 .email((String) response.get("email"))
                 .attributes(response)
@@ -52,6 +55,7 @@ public class OAuthAttributes {
 
     public User toEntity() {
         return User.builder()
+                .provider(provider)
                 .name(name)
                 .email(email)
                 .build();

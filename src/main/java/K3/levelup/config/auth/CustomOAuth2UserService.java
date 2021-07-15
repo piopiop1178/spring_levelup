@@ -48,6 +48,9 @@ public class CustomOAuth2UserService implements OAuth2UserService {
         httpSession.setAttribute("user", new SessionUser(user));
 
         //for memory db test
+//        System.out.println(user.getProvider());
+//        System.out.println(user.getName());
+//        System.out.println(user.getEmail());
 //        System.out.println(userRepository.findAll());
 
         return new DefaultOAuth2User(
@@ -61,7 +64,7 @@ public class CustomOAuth2UserService implements OAuth2UserService {
     //이메일 말고 다른 기준 필요함 -> ID 같은?
     //메모리 db에서는 중복저장되는 중. JPA 쓰면 괜춘
     private User saveOrUpdate(OAuthAttributes attributes) {
-        User user = userRepository.findByEmail(attributes.getEmail())
+        User user = userRepository.findByEmailAndProvider(attributes.getEmail(), attributes.getProvider())
                 .map(entity -> entity.update(attributes.getName()))
                 .orElse(attributes.toEntity());
 
