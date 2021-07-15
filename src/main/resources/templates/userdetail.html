@@ -3,9 +3,40 @@
 <head>
   <title>Getting Started: Serving Web Content</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <style>
+
+  </style>
 </head>
 <body>
-<p th:text="'Hello, ' + ${userName} + '!'" />
-<a href="/logout">로그아웃</a>
+  <main>
+    <h1>마이 페이지</h1>
+    <section class="user_info">
+      <ul>
+        <li>이름: 강민규</li>
+        <li>레벨: 1</li>
+        <li>제출한 글 개수: 0</li>
+        <li>따봉 개수: 0</li>
+        <li>랭킹: -</li>
+      </ul>
+    </section>
+    <section class="form-wrapper">
+      <nav class="tab">
+        <button th:if="${blog}" >글 제출</button>
+        <button th:if="${blog}" >아이디어(to do list)</button>
+        <button>블로그 등록</button>
+      </nav>
+      <form class="blog-form" action="/blog" method="post">
+        <h3>블로그를 등록하고 매일 글을 써봅시다.</h3>
+        <label for="blog">운영 블로그 주소</label>
+        <input type="text" id="blog" placeholder="블로그 주소를 입력">
+        <input type="submit" value="제출">
+      </form>
+      <form class="content-form" th:if="${blog}" action="/content" method="post">
+        <label for="url">오늘 쓴 글</label>
+        <input type="text" id="url" placeholder="글 주소를 입력">
+        <input type="submit" value="제출">
+      </form>
+    </section>
+  </main>
 </body>
 </html>
