@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <header>
-    <link rel="stylesheet" href="/static/styles/index.css">
-    <style>
+  <!-- <link rel="stylesheet" href="/static/styles/index.css"> -->
+  <style>
         .container {
             padding-top: 70px;
         }
@@ -36,19 +36,19 @@
     </style>
 </header>
 <body>
-    <div class="container">
-        <div class="form-box">
-            <h1>소셜 로그인</h1>
-            <p>
-                <a th:if="${userName == null}" href="/oauth2/authorization/google">구글 로그인</a>
-                <br>
-                <a th:if="${userName == null}" href="/oauth2/authorization/naver">네이버 로그인</a>
-                <br>
-                <a th:if="${userName == null}" href="/oauth2/authorization/naver">카카오 로그인</a>
-                <br>
-                <a th:if="${userName}" href="/logout">로그아웃</a>
-            </p>
-        </div>
-    </div>
+<div class="container">
+  <div class="form-box">
+    <h1>소셜 로그인</h1>
+    <p>
+      <a th:if="${userName == null}" href="/oauth2/authorization/google?redirect_uri=localhost:8080/user">구글 로그인</a>
+      <br>
+      <a th:if="${userName == null}" href="/oauth2/authorization/naver?redirect_uri=localhost:8080/user">네이버 로그인</a>
+      <br>
+      <a th:if="${userName == null}" href="/oauth2/authorization/naver">카카오 로그인</a>
+      <br>
+      <a th:if="${userName}" href="/logout">로그아웃</a>
+    </p>
+  </div>
+</div>
 </body>
 </html>
