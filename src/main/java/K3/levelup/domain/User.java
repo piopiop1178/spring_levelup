@@ -17,6 +17,8 @@ public class User {
     private String provider;
     private String name;
     private String email;
+    //tmp
+    private String blogUrl;
 
     //일단 기본적인 것만
     //추후 등록 블로그, 레벨, 경험치 등 필요

@@ -17,6 +17,7 @@
         <li>제출한 글 개수: 0</li>
         <li>따봉 개수: 0</li>
         <li>랭킹: -</li>
+        <li th:if="${userBlogUrl}" th:text="'블로그 url: ' + ${userBlogUrl}"></li>
       </ul>
     </section>
     <section class="form-wrapper">
@@ -25,10 +26,10 @@
         <button th:if="${blog}" >아이디어(to do list)</button>
         <button>블로그 등록</button>
       </nav>
-      <form class="blog-form" action="/blog" method="post">
+      <form class="blog-form" action="/user/blog" method="post">
         <h3>블로그를 등록하고 매일 글을 써봅시다.</h3>
         <label for="blog">운영 블로그 주소</label>
-        <input type="text" id="blog" placeholder="블로그 주소를 입력">
+        <input type="text" th:name="blogUrl" id="blog" placeholder="블로그 주소를 입력">
         <input type="submit" value="제출">
       </form>
       <form class="content-form" th:if="${blog}" action="/content" method="post">
