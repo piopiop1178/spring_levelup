@@ -28,4 +28,8 @@ public class User {
 
         return this;
     }
+
+    public void registerBlogUrl(String blogUrl) {
+        this.blogUrl = blogUrl;
+    }
 }

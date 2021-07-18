@@ -35,11 +35,6 @@ public class CustomOAuth2UserService implements OAuth2UserService {
         String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
                 .getUserInfoEndpoint().getUserNameAttributeName();
 
-        //for memory db test
-//        System.out.println(registrationId);
-//        System.out.println(userNameAttributeName);
-//        System.out.println(oAuth2User.getAttributes());
-
         //user attribute dto
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
@@ -51,7 +46,6 @@ public class CustomOAuth2UserService implements OAuth2UserService {
         System.out.println(user.getProvider());
         System.out.println(user.getName());
         System.out.println(user.getEmail());
-        System.out.println(userRepository.findAll());
 
         return new DefaultOAuth2User(
                 Collections.singleton(new SimpleGrantedAuthority("ROLE_USER")),

@@ -1,6 +1,8 @@
 package K3.levelup.controller;
 
 import K3.levelup.config.auth.dto.SessionUser;
+import K3.levelup.domain.User;
+import K3.levelup.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpSession;
 @RequestMapping("/user") //user로 시작되는 url에 맵핑
 public class ProfileController {
     private final HttpSession httpSession;
+    private final UserService userservice;
 
     @GetMapping("")
     public String profile(Model model) {
@@ -38,11 +41,13 @@ public class ProfileController {
     public String registerBlog(Model model, String blogUrl) {
         //폼 내부의 url 받고 blog 객체 생성
         // user 내부에 추가 -> user entity 변경 필요 - 블로그에서 유저를 참조하는게 맞는지?? 고민 필요
+        //일단은 user 내의 blogurl만 추가
         SessionUser user = (SessionUser) httpSession.getAttribute("user");
         user.setBlogUrl(blogUrl);
 
         //Sessionuser 바꿨으면 db의 user도 바꿔줘야함
+        userservice.setBlogUrl(user.getId(), blogUrl);
 
-        return "userdetail";
+        return "redirect:/user";
     }
 }
