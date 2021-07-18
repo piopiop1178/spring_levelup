@@ -12,12 +12,12 @@
     <h1>마이 페이지</h1>
     <section class="user_info">
       <ul>
-        <li>이름: 강민규</li>
+        <li th:text="'이름: ' + ${userName}"></li>
         <li>레벨: 1</li>
         <li>제출한 글 개수: 0</li>
         <li>따봉 개수: 0</li>
         <li>랭킹: -</li>
-        <li th:if="${userBlogUrl}" th:text="'블로그 url: ' + ${userBlogUrl}"></li>
+        <li th:if="${blog}" th:text="'블로그 url: ' + ${blog}"></li>
       </ul>
     </section>
     <section class="form-wrapper">
@@ -32,7 +32,7 @@
         <input type="text" th:name="blogUrl" id="blog" placeholder="블로그 주소를 입력">
         <input type="submit" value="제출">
       </form>
-      <form class="content-form" th:if="${blog}" action="/content" method="post">
+      <form class="content-form" th:if="${blog}" action="/user/content" method="post">
         <label for="url">오늘 쓴 글</label>
         <input type="text" id="url" placeholder="글 주소를 입력">
         <input type="submit" value="제출">
