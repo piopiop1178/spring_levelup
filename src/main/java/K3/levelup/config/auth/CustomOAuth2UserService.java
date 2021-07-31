@@ -3,7 +3,7 @@ package K3.levelup.config.auth;
 import K3.levelup.config.auth.dto.OAuthAttributes;
 import K3.levelup.config.auth.dto.SessionUser;
 import K3.levelup.domain.User;
-import K3.levelup.repository.UserRepository;
+import K3.levelup.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

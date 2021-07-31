@@ -1,4 +1,4 @@
-package K3.levelup.repository;
+package K3.levelup.repository.user;
 
 import K3.levelup.domain.User;
 

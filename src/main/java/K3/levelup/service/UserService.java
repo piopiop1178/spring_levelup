@@ -1,7 +1,7 @@
 package K3.levelup.service;
 
 import K3.levelup.domain.User;
-import K3.levelup.repository.UserRepository;
+import K3.levelup.repository.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
