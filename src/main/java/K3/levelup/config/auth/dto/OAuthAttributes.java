@@ -78,6 +78,7 @@ public class OAuthAttributes {
                 .provider(provider)
                 .name(name)
                 .email(email)
+                .exp(0)
                 .build();
     }
 }

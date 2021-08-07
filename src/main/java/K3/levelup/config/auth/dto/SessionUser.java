@@ -15,6 +15,7 @@ public class SessionUser implements Serializable {
     private String name;
     private String email;
     private String blogUrl;
+    private int exp;
 
     public SessionUser(User user) {
         this.id = user.getId();

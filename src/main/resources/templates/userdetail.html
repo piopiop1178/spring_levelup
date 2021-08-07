@@ -13,7 +13,7 @@
     <section class="user_info">
       <ul>
         <li th:text="'이름: ' + ${userName}"></li>
-        <li>레벨: 1</li>
+        <li  th:text="'레벨: ' + ${exp/10 + 1}"></li>
         <li>제출한 글 개수: 0</li>
         <li>따봉 개수: 0</li>
         <li>랭킹: -</li>

@@ -23,6 +23,7 @@ public class User {
     private String email;
     //tmp
     private String blogUrl;
+    private int exp; //Integer 써야하는지?? 잘 모르겠음
 
     //일단 기본적인 것만
     //추후 등록 블로그, 레벨, 경험치 등 필요

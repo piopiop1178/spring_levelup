@@ -25,9 +25,13 @@ public class ProfileController {
         if(user != null) {
             model.addAttribute("userName", user.getName());
 
-            if(user.getBlogUrl() != null) {
+            if(user.getBlogUrl() != null && httpSession.getAttribute("blog") == null) {
                 System.out.println(user.getBlogUrl());
                 model.addAttribute("blog", user.getBlogUrl());
+            }
+
+            if (httpSession.getAttribute(("exp")) == null) {
+                model.addAttribute("exp", user.getExp());
             }
         }
 
