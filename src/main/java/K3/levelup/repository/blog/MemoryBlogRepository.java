@@ -25,7 +25,7 @@ public class MemoryBlogRepository implements BlogRepository {
     }
 
     @Override
-    public Optional<Blog> findByUrl(String url) {
+    public Optional<Blog> findByBlogUrl(String url) {
         return Optional.ofNullable(repo.get(url));
     }
 

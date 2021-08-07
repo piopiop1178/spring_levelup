@@ -9,6 +9,6 @@ import java.util.Optional;
 public interface BlogRepository {
     Blog save(Blog blog);
     Optional<Blog> findById(Long id);
-    Optional<Blog> findByUrl(String url);
+    Optional<Blog> findByBlogUrl(String url);
     List<Blog> findAll();
 }
